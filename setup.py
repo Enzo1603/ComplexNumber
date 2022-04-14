@@ -25,8 +25,9 @@ ISRELEASED = False
 PYTHON_MIN_VERSION = '3.10'
 # PYTHON_MAX_VERSION = '3.10'
 # PYTHON_REQUIRES = f'>={PYTHON_MIN_VERSION}, <= {PYTHON_MAX_VERSION}'
+PYTHON_REQUIRES = f">={PYTHON_MIN_VERSION}"
 
-INSTALL_REQUIRES = []
+# INSTALL_REQUIRES = []
 
 PACKAGES = [
     'complex_number',
@@ -38,8 +39,8 @@ metadata = dict(
     version=VERSION,
     long_description=README,
     packages=PACKAGES,
-    # python_requires=PYTHON_REQUIRES,
-    install_requires=INSTALL_REQUIRES,
+    python_requires=PYTHON_REQUIRES,
+    # install_requires=INSTALL_REQUIRES,
     author=AUTHOR,
     # author_email=AUTHOR_EMAIL,
     description=DESCRIPTION,

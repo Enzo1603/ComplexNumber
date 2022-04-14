@@ -1,0 +1,20 @@
+# Libraries
+
+# Testing
+codecov
+pytest
+pytest-cov
+pre-commit
+
+# Linting
+autopep8
+flake8
+isort
+mypy
+pylint
+
+# Documentation
+mkdocs
+mkdocstrings
+mkdocs-material
+Pygments

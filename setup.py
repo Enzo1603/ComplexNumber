@@ -19,7 +19,7 @@ DESCRIPTION = 'This is a simple complex number python package.'
 LICENSE = 'MIT'
 README = 'This is a simple complex number python package.'
 
-VERSION = '1.0.0'
+VERSION = '0.1.0'
 ISRELEASED = False
 
 PYTHON_MIN_VERSION = '3.10'

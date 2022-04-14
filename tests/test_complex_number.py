@@ -1,7 +1,8 @@
 """Test Complex Number."""
 
 import unittest
-from math import atan, pi
+from math import atan
+from math import pi
 
 from complex_number import ComplexNumber
 
@@ -15,12 +16,16 @@ class ComplexNumberTests(unittest.TestCase):
         self.z5 = ComplexNumber(0, -3)
         self.z6 = ComplexNumber(0, 2)
         self.z7 = ComplexNumber(2, -2)
+        self.z8 = ComplexNumber()
 
     def test_init(self) -> None:
         """Test the __init__ method."""
-        z1 = ComplexNumber(2, 2)
-        z2 = ComplexNumber(-2, -2)
-        z3 = ComplexNumber()
+        self.assertEqual(self.z1._real, 0)
+        self.assertEqual(self.z1._imag, 0)
+        self.assertEqual(self.z8._real, 0)
+        self.assertEqual(self.z8._imag, 0)
+        self.assertEqual(self.z2._real, 1)
+        self.assertEqual(self.z2._imag, 1)
         with self.assertRaises(TypeError):
             ComplexNumber("a", "b")
 
@@ -69,11 +74,11 @@ class ComplexNumberTests(unittest.TestCase):
         """Test the argument property getter."""
         with self.assertRaises(ValueError):
             self.z1.argument
-        self.assertAlmostEqual(self.z2.argument, pi/4)
-        self.assertAlmostEqual(self.z3.argument, 1.25*pi)
-        self.assertAlmostEqual(self.z4.argument, atan(3/2))
-        self.assertAlmostEqual(self.z5.argument, 1.5*pi)
-        self.assertAlmostEqual(self.z7.argument, 1.75*pi)
+        self.assertAlmostEqual(self.z2.argument, pi / 4)
+        self.assertAlmostEqual(self.z3.argument, 1.25 * pi)
+        self.assertAlmostEqual(self.z4.argument, atan(3 / 2))
+        self.assertAlmostEqual(self.z5.argument, 1.5 * pi)
+        self.assertAlmostEqual(self.z7.argument, 1.75 * pi)
 
     def test_argument_setter(self) -> None:
         """Test the argument property setter."""
@@ -200,13 +205,13 @@ class ComplexNumberTests(unittest.TestCase):
     def test_polar(self) -> None:
         """Test the polar method."""
         result = self.z2.polar()
-        expected_result = {"modulus": 2**0.5, "argument": pi/4}
+        expected_result = {"modulus": 2 ** 0.5, "argument": pi / 4}
         self.assertEqual(result["modulus"], expected_result["modulus"])
         self.assertAlmostEqual(result["argument"], expected_result["argument"])
 
     def test_to_cartesian(self) -> None:
         """Test the to_cartesian staticmethod."""
-        result_real, result_imag = ComplexNumber.to_cartesian(2**0.5, pi/4)
+        result_real, result_imag = ComplexNumber.to_cartesian(2 ** 0.5, pi / 4)
         expected_real, expected_imag = 1.0, 1.0
         self.assertAlmostEqual(result_real, expected_real)
         self.assertAlmostEqual(result_imag, expected_imag)

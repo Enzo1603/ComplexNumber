@@ -3,8 +3,13 @@
 
 
 from copy import deepcopy
-from math import acos, cos, pi, sin
-from typing import Any, Union
+from math import acos
+from math import cos
+from math import pi
+from math import sin
+from typing import Any
+from typing import Union
+
 
 Number = int | float
 Complex_or_Number = Union['ComplexNumber', Number]
@@ -164,7 +169,8 @@ class ComplexNumber:
         return f"{self.real:.{precision}f}{self.imag:+.{precision}f}i"
 
     def print(self, precision: int = 2) -> str:
-        """A more user friendly alternative to set the number of decimal places instead of using __str__(...)
+        """A more user friendly alternative to set the number of decimal places instead of using
+        __str__(...)
 
         Args:
             precision (int, optional): Set number of decimal places. Defaults to 2.
@@ -247,7 +253,8 @@ class ComplexNumber:
         Raises:
             ZeroDivisionError: If other is a number and is equal to 0.
             ZeroDivisionError: If other is a complex number and its modulus is equal to 0.
-            SystemError: Should never happen. If it does, then some unwanted case is not being catched.
+            SystemError: Should never happen. If it does, then some unwanted case is not being
+            catched.
 
         Returns:
             ComplexNumber: The division result as a complex number instance.
@@ -281,7 +288,8 @@ class ComplexNumber:
             exponent (Number): The exponent.
 
         Returns:
-            ComplexNumber: The result of raising the complex number instance to the power of the exponent.
+            ComplexNumber: The result of raising the complex number instance to the power of the
+            exponent.
         """
         ComplexNumber.check_isinstance(instance_type=Number, value=exponent, name="exponent")
         modulus, argument = self.modulus, self.argument
@@ -306,14 +314,14 @@ class ComplexNumber:
         """
         ComplexNumber.check_isinstance(instance_type=int, value=index, name="index")
         results = []
-        first = self ** (1/index)
+        first = self ** (1 / index)
         results.append(first)
 
         modulus = first.modulus
         argument = first.argument
-        k = 2*pi / index
+        k = 2 * pi / index
         for i in range(1, index):
-            complex_number = ComplexNumber.from_polar(modulus, argument + i*k)
+            complex_number = ComplexNumber.from_polar(modulus, argument + i * k)
             results.append(complex_number)
 
         return tuple(results)
@@ -394,7 +402,8 @@ class ComplexNumber:
         Args:
             instance_type (Any): The class(es) to check for.
             value (Any): The value to check.
-            name (str): The variable name of the originally passed in argument for the error message.
+            name (str): The variable name of the originally passed in argument for the error
+            message.
 
         Raises:
             TypeError: If value is not an instance of instance_type.
@@ -424,7 +433,8 @@ class ComplexNumber:
 
         Args:
             value (Number): The value to check.
-            name (str): The variable name of the originally passed in argument for the error message.
+            name (str): The variable name of the originally passed in argument for the error
+            message.
             compare_value (Number, optional): The value to compare against. Defaults to 0.
 
         Raises:
@@ -443,7 +453,8 @@ class ComplexNumber:
 
         Args:
             value (Number): The value to check.
-            name (str): The variable name of the originally passed in argument for the error message.
+            name (str): The variable name of the originally passed in argument for the error
+            message.
             compare_value (Number, optional): The value to compare against. Defaults to 0.
 
         Raises:

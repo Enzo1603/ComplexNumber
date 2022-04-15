@@ -20,14 +20,13 @@ LONG_DESCRIPTION_CONTENT_TYPE = "text/markdown"
 URL = "https://github.com/Enzo1603/ComplexNumber"
 
 CLASSIFIERS = [
-    "License:: OSI Approved",
-    "Programming Language:: Python:: 3.10:: or higher",
-    "Topic:: Software Development",
-    "Operating System:: Microsoft:: Windows",
-    "Operating System:: POSIX",
-    "Operating System:: Unix",
-    "Operating System:: MacOS",
-
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3.10",
+    "Topic :: Software Development",
+    "Operating System :: Microsoft :: Windows :: Windows 10",
+    "Operating System :: POSIX",
+    "Operating System :: Unix",
+    "Operating System :: MacOS",
 ]
 
 

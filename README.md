@@ -60,7 +60,7 @@ print(+z1)
 print(-z1)
 ```
 
-## Additional Operations
+### Additional Operations
 
 ```python
 print(z1.conjugate())
@@ -70,7 +70,7 @@ print(z1.polar())  # returns dictionary with the keys: modulus and argument.
 print(ComplexNumber.to_cartesian(modulus=2, argument=math.pi))  # returns tuple with real and imag part.
 ```
 
-## Check for Equality
+### Check for Equality
 
 ```python
 print(z1 == z2)  # true if real and imag parts are both equal to each other

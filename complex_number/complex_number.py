@@ -174,11 +174,9 @@ class ComplexNumber:
 
         Args:
             precision (int, optional): Set number of decimal places. Defaults to 2.
-
-        Returns:
-            str: The complex number instance as a string.
         """
-        return self.__str__(precision)
+
+        print(self.__str__(precision))
 
     def __add__(self, other: Complex_or_Number) -> 'ComplexNumber':
         """Adds to a complex number another number or complex number.
@@ -416,11 +414,11 @@ class ComplexNumber:
         return True
 
     @staticmethod
-    def is_number(value: Number) -> bool:
+    def is_number(value: Any) -> bool:
         """Checks if value is a number.
 
         Args:
-            value (Number): The value to check.
+            value (Any): The value to check.
 
         Returns:
             bool: True if value is a number. False if value is not a number.

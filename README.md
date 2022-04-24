@@ -54,7 +54,7 @@ print(z1 ** 3)
 z1 **= 3
 
 print(z1.root())  # defaults to 2
-print(z1.root(3))
+print(z1.root(3)) # returns a tuple of ComplexNumbers with all solutions
 
 print(+z1)
 print(-z1)

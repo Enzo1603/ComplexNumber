@@ -7,7 +7,7 @@ DISTNAME = "complex_number"
 AUTHOR = "Enzo Baraldi"
 # AUTHOR_EMAIL = ""
 
-VERSION = '0.1.2'
+VERSION = "0.1.3"
 ISRELEASED = True
 
 DESCRIPTION = "This is a simple complex number python package."
@@ -46,7 +46,6 @@ PACKAGES = [
 
 def setup_package() -> None:
     setup(
-
         name=DISTNAME,
         version=VERSION,
         author=AUTHOR,

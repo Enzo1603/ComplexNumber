@@ -32,24 +32,24 @@ class ComplexNumber:
         self._real: float = float(real)
         self._imag: float = float(imag)
 
-    @staticmethod
-    def from_polar(modulus: Number, argument: Number) -> 'ComplexNumber':
+    @classmethod
+    def from_polar(cls, modulus: Number, argument: Number) -> 'ComplexNumber':
         """Initialize a complex number from the polar form.
 
         Args:
-            modulus (Number): The modulus.
-            argument (Number): The argument.
+            modulus (Number): The modulus of the complex number in polar form.
+            argument (Number): The argument of the complex number in polar form.
 
         Returns:
-            ComplexNumber: _description_
+            ComplexNumber: ComplexNumber instance.
         """
-        ComplexNumber.check_isinstance(instance_type=Number, value=modulus, name="modulus")
-        ComplexNumber.check_isinstance(instance_type=Number, value=argument, name="argument")
-        ComplexNumber.check_geq(value=modulus, name="modulus")
+        cls.check_isinstance(instance_type=Number, value=modulus, name="modulus")
+        cls.check_isinstance(instance_type=Number, value=argument, name="argument")
+        cls.check_geq(value=modulus, name="modulus")
 
-        real, imag = ComplexNumber.to_cartesian(modulus, argument)
+        real, imag = cls.to_cartesian(modulus, argument)
 
-        return ComplexNumber(real, imag)
+        return cls(real, imag)
 
     @property
     def real(self) -> float:

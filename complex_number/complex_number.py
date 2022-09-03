@@ -12,12 +12,11 @@ from typing import Union
 
 
 Number = int | float
-Complex_or_Number = Union['ComplexNumber', Number]
+Complex_or_Number = Union["ComplexNumber", Number]
 
 
 class ComplexNumber:
-    """ComplexNumber class to perform complex operations.
-    """
+    """ComplexNumber class to perform complex operations."""
 
     def __init__(self, real: Number = 0.0, imag: Number = 0.0) -> None:
         """Initialize a complex number instance with the given real and imag values.
@@ -26,14 +25,14 @@ class ComplexNumber:
             real (Number, optional): The real part. Defaults to 0.0.
             imag (Number, optional): The imaginary part. Defaults to 0.0.
         """
-        ComplexNumber.check_isinstance(instance_type=Number, value=real, name="real")
-        ComplexNumber.check_isinstance(instance_type=Number, value=imag, name="imag")
+        self.__class__.check_isinstance(instance_type=Number, value=real, name="real")
+        self.__class__.check_isinstance(instance_type=Number, value=imag, name="imag")
 
         self._real: float = float(real)
         self._imag: float = float(imag)
 
     @classmethod
-    def from_polar(cls, modulus: Number, argument: Number) -> 'ComplexNumber':
+    def from_polar(cls, modulus: Number, argument: Number) -> "ComplexNumber":
         """Initialize a complex number from the polar form.
 
         Args:
@@ -67,7 +66,7 @@ class ComplexNumber:
         Args:
             real (Number): New real part.
         """
-        ComplexNumber.check_isinstance(instance_type=Number, value=real, name="real")
+        self.__class__.check_isinstance(instance_type=Number, value=real, name="real")
         self._real = float(real)
 
     @property
@@ -86,7 +85,7 @@ class ComplexNumber:
         Args:
             imag (Number): New imaginary part.
         """
-        ComplexNumber.check_isinstance(instance_type=Number, value=imag, name="imag")
+        self.__class__.check_isinstance(instance_type=Number, value=imag, name="imag")
         self._imag = float(imag)
 
     @property
@@ -106,10 +105,12 @@ class ComplexNumber:
         Args:
             modulus (Number): New modulus.
         """
-        ComplexNumber.check_isinstance(instance_type=Number, value=modulus, name="modulus")
-        ComplexNumber.check_gt(value=modulus, name="modulus")
+        self.__class__.check_isinstance(
+            instance_type=Number, value=modulus, name="modulus"
+        )
+        self.__class__.check_gt(value=modulus, name="modulus")
         argument = self.argument
-        real, imag = ComplexNumber.to_cartesian(modulus, argument)
+        real, imag = self.__class__.to_cartesian(modulus, argument)
         self.real = real
         self.imag = imag
 
@@ -121,7 +122,7 @@ class ComplexNumber:
             float: The argument.
         """
         modulus = self.modulus
-        ComplexNumber.check_gt(value=modulus, name="modulus")
+        self.__class__.check_gt(value=modulus, name="modulus")
         argument = acos(self.real / modulus)
 
         if self.real < 0 and self.imag < 0:
@@ -142,9 +143,11 @@ class ComplexNumber:
         Args:
             argument (Number): The new argument.
         """
-        ComplexNumber.check_isinstance(instance_type=Number, value=argument, name="argument")
+        self.__class__.check_isinstance(
+            instance_type=Number, value=argument, name="argument"
+        )
         modulus = self.modulus
-        real, imag = ComplexNumber.to_cartesian(modulus, argument)
+        real, imag = self.__class__.to_cartesian(modulus, argument)
         self.real = real
         self.imag = imag
 
@@ -165,7 +168,9 @@ class ComplexNumber:
         Returns:
             str: The complex number instance as a string.
         """
-        ComplexNumber.check_isinstance(instance_type=int, value=precision, name="precision")
+        self.__class__.check_isinstance(
+            instance_type=int, value=precision, name="precision"
+        )
         return f"{self.real:.{precision}f}{self.imag:+.{precision}f}i"
 
     def print(self, precision: int = 2) -> str:
@@ -178,7 +183,7 @@ class ComplexNumber:
 
         print(self.__str__(precision))
 
-    def __add__(self, other: Complex_or_Number) -> 'ComplexNumber':
+    def __add__(self, other: Complex_or_Number) -> "ComplexNumber":
         """Adds to a complex number another number or complex number.
 
         Args:
@@ -187,18 +192,19 @@ class ComplexNumber:
         Returns:
             ComplexNumber: The addition result as complex number instance.
         """
-        ComplexNumber.check_isinstance(instance_type=(
-            ComplexNumber, Number), value=other, name="other")
-        if ComplexNumber.is_number(other):
-            other = ComplexNumber(real=other)
+        self.__class__.check_isinstance(
+            instance_type=(self.__class__, Number), value=other, name="other"
+        )
+        if self.__class__.is_number(other):
+            other = self.__class__(real=other)
         real = self.real + other.real
         imag = self.imag + other.imag
-        return ComplexNumber(real, imag)
+        return self.__class__(real, imag)
 
-    def __iadd__(self, other: Complex_or_Number) -> 'ComplexNumber':
+    def __iadd__(self, other: Complex_or_Number) -> "ComplexNumber":
         return self.__add__(other)
 
-    def __sub__(self, other: Complex_or_Number) -> 'ComplexNumber':
+    def __sub__(self, other: Complex_or_Number) -> "ComplexNumber":
         """Subtracts from a complex number another number or complex number.
 
         Args:
@@ -207,18 +213,19 @@ class ComplexNumber:
         Returns:
             ComplexNumber: The subtraction result as complex number instance.
         """
-        ComplexNumber.check_isinstance(instance_type=(
-            ComplexNumber, Number), value=other, name="other")
-        if ComplexNumber.is_number(other):
-            other = ComplexNumber(real=other)
+        self.__class__.check_isinstance(
+            instance_type=(self.__class__, Number), value=other, name="other"
+        )
+        if self.__class__.is_number(other):
+            other = self.__class__(real=other)
         real = self.real - other.real
         imag = self.imag - other.imag
-        return ComplexNumber(real, imag)
+        return self.__class__(real, imag)
 
-    def __isub__(self, other: Complex_or_Number) -> 'ComplexNumber':
+    def __isub__(self, other: Complex_or_Number) -> "ComplexNumber":
         return self.__sub__(other)
 
-    def __mul__(self, other: Complex_or_Number) -> 'ComplexNumber':
+    def __mul__(self, other: Complex_or_Number) -> "ComplexNumber":
         """Multiplies to a complex number another number or complex number.
 
         Args:
@@ -227,22 +234,23 @@ class ComplexNumber:
         Returns:
             ComplexNumber: The multiplication result as complex number instance.
         """
-        ComplexNumber.check_isinstance(instance_type=(
-            ComplexNumber, Number), value=other, name="other")
-        if ComplexNumber.is_number(other):
-            other = ComplexNumber(real=other)
+        self.__class__.check_isinstance(
+            instance_type=(self.__class__, Number), value=other, name="other"
+        )
+        if self.__class__.is_number(other):
+            other = self.__class__(real=other)
         modulus1, argument1 = self.modulus, self.argument
         modulus2, argument2 = other.modulus, other.argument
 
         modulus = modulus1 * modulus2
         argument = argument1 + argument2
-        real, imag = ComplexNumber.to_cartesian(modulus, argument)
-        return ComplexNumber(real, imag)
 
-    def __imul__(self, other: Complex_or_Number) -> 'ComplexNumber':
+        return self.__class__.from_polar(modulus, argument)
+
+    def __imul__(self, other: Complex_or_Number) -> "ComplexNumber":
         return self.__mul__(other)
 
-    def __truediv__(self, other: Complex_or_Number) -> 'ComplexNumber':
+    def __truediv__(self, other: Complex_or_Number) -> "ComplexNumber":
         """Divides a complex number by another number or complex number.
 
         Args:
@@ -257,12 +265,13 @@ class ComplexNumber:
         Returns:
             ComplexNumber: The division result as a complex number instance.
         """
-        ComplexNumber.check_isinstance(instance_type=(
-            ComplexNumber, Number), value=other, name="other")
-        if ComplexNumber.is_number(other):
+        self.__class__.check_isinstance(
+            instance_type=(self.__class__, Number), value=other, name="other"
+        )
+        if self.__class__.is_number(other):
             if other == 0:
                 raise ZeroDivisionError("You cannot divide by 0.")
-            other = ComplexNumber(real=other)
+            other = self.__class__(real=other)
         elif other.modulus == 0:
             raise ZeroDivisionError("You cannot divide by 0.")
         else:
@@ -273,13 +282,13 @@ class ComplexNumber:
 
         modulus = modulus1 / modulus2
         argument = argument1 - argument2
-        real, imag = ComplexNumber.to_cartesian(modulus, argument)
-        return ComplexNumber(real, imag)
 
-    def __itruediv__(self, other: Complex_or_Number) -> 'ComplexNumber':
+        return self.__class__.from_polar(modulus, argument)
+
+    def __itruediv__(self, other: Complex_or_Number) -> "ComplexNumber":
         return self.__truediv__(other)
 
-    def __pow__(self, exponent: Number) -> 'ComplexNumber':
+    def __pow__(self, exponent: Number) -> "ComplexNumber":
         """Raises a complex number to the power of the exponent.
 
         Args:
@@ -289,16 +298,17 @@ class ComplexNumber:
             ComplexNumber: The result of raising the complex number instance to the power of the
             exponent.
         """
-        ComplexNumber.check_isinstance(instance_type=Number, value=exponent, name="exponent")
+        self.__class__.check_isinstance(
+            instance_type=Number, value=exponent, name="exponent"
+        )
         modulus, argument = self.modulus, self.argument
         result_modulus, result_argument = modulus**exponent, argument * abs(exponent)
         if exponent < 0:
             result_argument = -result_argument
 
-        real, imag = ComplexNumber.to_cartesian(result_modulus, result_argument)
-        return ComplexNumber(real, imag)
+        return self.__class__.from_polar(result_modulus, result_argument)
 
-    def __ipow__(self, other: Number) -> 'ComplexNumber':
+    def __ipow__(self, other: Number) -> "ComplexNumber":
         return self.__pow__(other)
 
     def root(self, index: int = 2) -> tuple:
@@ -310,7 +320,7 @@ class ComplexNumber:
         Returns:
             tuple: Tuple of all solutions as complex number instances.
         """
-        ComplexNumber.check_isinstance(instance_type=int, value=index, name="index")
+        self.__class__.check_isinstance(instance_type=int, value=index, name="index")
         results = []
         first = self ** (1 / index)
         results.append(first)
@@ -319,12 +329,12 @@ class ComplexNumber:
         argument = first.argument
         k = 2 * pi / index
         for i in range(1, index):
-            complex_number = ComplexNumber.from_polar(modulus, argument + i * k)
+            complex_number = self.__class__.from_polar(modulus, argument + i * k)
             results.append(complex_number)
 
         return tuple(results)
 
-    def __eq__(self, other: 'ComplexNumber') -> bool:
+    def __eq__(self, other: "ComplexNumber") -> bool:
         """Checks whether the real parts and the imaginary parts are equal.
 
         Args:
@@ -340,16 +350,16 @@ class ComplexNumber:
             return (self.real, self.imag) == (other.real, other.imag)
         raise NotImplementedError
 
-    def __pos__(self) -> 'ComplexNumber':
+    def __pos__(self) -> "ComplexNumber":
         return self
 
-    def __neg__(self) -> 'ComplexNumber':
+    def __neg__(self) -> "ComplexNumber":
         copy = deepcopy(self)
         copy.real = -copy.real
         copy.imag = -copy.imag
         return copy
 
-    def conjugate(self) -> 'ComplexNumber':
+    def conjugate(self) -> "ComplexNumber":
         """Returns conjugated complex number instance.
 
         Returns:
@@ -358,7 +368,7 @@ class ComplexNumber:
         copy = deepcopy(self)
         real = copy.real
         imag = -copy.imag
-        return ComplexNumber(real, imag)
+        return self.__class__(real, imag)
 
     def polar(self) -> dict[str, float]:
         """Return the polar form of the complex number instance in a dictionary.
@@ -374,7 +384,9 @@ class ComplexNumber:
         Args:
             precision (int, optional): Set number of decimal places. Defaults to 2.
         """
-        ComplexNumber.check_isinstance(instance_type=int, value=precision, name="precision")
+        self.__class__.check_isinstance(
+            instance_type=int, value=precision, name="precision"
+        )
         modulus, argument = self.modulus, self.argument
         print(f"{modulus:.{precision}f} cis({(argument/pi):.{precision}f} π)")
 
@@ -426,7 +438,9 @@ class ComplexNumber:
         return isinstance(value, Number)
 
     @staticmethod
-    def check_geq(*, compare_value: Number = 0, value: Number, name: str) -> None | bool:
+    def check_geq(
+        *, compare_value: Number = 0, value: Number, name: str
+    ) -> None | bool:
         """Checks if value is greater or equal to compare_value. If not a ValueError is raised.
 
         Args:

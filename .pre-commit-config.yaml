@@ -7,11 +7,6 @@ repos:
     -   id: check-docstring-first
     -   id: check-yaml
 
--   repo: https://gitlab.com/pycqa/flake8
-    rev: v5.0.4
-    hooks:
-    -   id: flake8
-
 -   repo: https://github.com/psf/black
     rev: stable
     hooks:

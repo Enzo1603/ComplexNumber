@@ -7,13 +7,3 @@ repos:
     -   id: check-docstring-first
     -   id: check-yaml
 
--   repo: https://github.com/psf/black
-    rev: v22.6.0
-    hooks:
-    -   id: black
-
--   repo: https://github.com/PyCQA/isort
-    rev: v5.10.1
-    hooks:
-    -   id: isort
-

@@ -46,6 +46,7 @@ class ComplexNumber:
 
 
 
+
     @classmethod
     def from_polar(cls, modulus: Number, argument: Number) -> "ComplexNumber":
         """Initialize a complex number from the polar form.

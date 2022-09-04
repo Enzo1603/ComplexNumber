@@ -3,10 +3,7 @@
 
 
 from copy import deepcopy
-from math import acos
-from math import cos
-from math import pi
-from math import sin
+from math import acos, cos, pi, sin
 from typing import Any
 from typing import Union
 

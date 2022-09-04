@@ -173,7 +173,7 @@ class ComplexNumber:
         )
         return f"{self.real:.{precision}f}{self.imag:+.{precision}f}i"
 
-    def print(self, precision: int = 2) -> str:
+    def print(self, precision: int = 2) -> None:
         """A more user friendly alternative to set the number of decimal places instead of using
         __str__(...)
 

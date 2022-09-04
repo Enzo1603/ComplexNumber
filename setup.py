@@ -7,7 +7,7 @@ DISTNAME = "complex_number"
 AUTHOR = "Enzo Baraldi"
 # AUTHOR_EMAIL = ""
 
-VERSION = "0.1.3"
+VERSION = "0.1.4"
 ISRELEASED = True
 
 DESCRIPTION = "This is a simple complex number python package."
@@ -27,7 +27,13 @@ CLASSIFIERS = [
 ]
 
 
-KEYWORDS = ["python", "python 3.10", "complex number", "complex numbers", "complex operations"]
+KEYWORDS = [
+    "python",
+    "python 3.10",
+    "complex number",
+    "complex numbers",
+    "complex operations",
+]
 LICENSE = "MIT"
 
 
